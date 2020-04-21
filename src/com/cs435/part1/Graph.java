@@ -4,24 +4,32 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Graph {
-    LinkedList<Node> graph = new LinkedList<>();
+    LinkedList<Node> graphList = new LinkedList<>();
 
     public void addNode(final int val){
-        graph.add(new Node(val));
+        graphList.add(new Node(val));
     }
 
     public void addUndirectedEdge(final Node first, final Node second){
-        first.addEdge(second);
-        second.addEdge(first);
+        if(first != null && second != null) {
+            first.addEdge(second);
+            second.addEdge(first);
+        }else{
+            System.out.println("One node didn't exist!");
+        }
     }
 
-    public void removeUndriectedEdge(final Node first, final Node second){
-        first.removeEdge(second);
-        second.removeEdge(first);
+    public void removeUndirectedEdge(final Node first, final Node second){
+        if(first != null && second != null) {
+            first.removeEdge(second);
+            second.removeEdge(first);
+        }else{
+            System.out.println("One node doesn't exist!");
+        }
     }
 
     public HashSet<Node> getAllNodes(){
-        return new HashSet<>(graph);
+        return new HashSet<>(graphList);
     }
 
 
